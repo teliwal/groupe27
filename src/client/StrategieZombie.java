@@ -4,25 +4,24 @@ import java.awt.Point;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 
-import client.controle.Console;
 import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
-import serveur.element.PersonnageHulk;
+import serveur.element.PersonnageZombie;
 import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
+import client.controle.Console;
 
-public class StrategieHulk extends Strategie {
-	
-	public StrategieHulk(String ipArene, int port, String ipConsole, String nom, String groupe,
+public class StrategieZombie extends Strategie{
+	public StrategieZombie(String ipArene, int port, String ipConsole, String nom, String groupe,
 			HashMap<Caracteristique, Integer> caracts, int nbTours, Point position, LoggerProjet logger) {
 		logger.info("Lanceur", "Creation de la console...");
 		
 		try {
 			console = new Console(ipArene, port, ipConsole, this, 
-					new PersonnageHulk(nom, caracts), 
+					new PersonnageZombie(nom, caracts), 
 					nbTours, position, logger);
 			logger.info("Lanceur", "Creation de la console reussie");
 			
@@ -79,4 +78,5 @@ public class StrategieHulk extends Strategie {
 			}
 		}
 	}
+
 }
