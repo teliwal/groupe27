@@ -18,13 +18,7 @@ import utilitaires.Constantes;
 /**
  * Strategie d'un personnage. 
  */
-public class StrategiePersonnage {
-	
-	/**
-	 * Console permettant d'ajouter une phrase et de recuperer le serveur 
-	 * (l'arene).
-	 */
-	protected Console console;
+public class StrategiePersonnage extends Strategie{
 
 	/**
 	 * Cree un personnage, la console associe et sa strategie.
