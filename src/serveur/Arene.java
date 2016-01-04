@@ -20,6 +20,7 @@ import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Personnage;
+import serveur.element.PersonnageFou;
 import serveur.element.Potion;
 import serveur.interaction.Deplacement;
 import serveur.interaction.Duel;
@@ -602,8 +603,16 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 * @return vrai si l'element donne est bien un voisin
 	 */
 	private boolean estVoisin(VuePersonnage courant, VueElement<?> voisin) throws RemoteException {
+		int vision;
+		
+		if(courant.getElement() instanceof PersonnageFou) {
+			vision = Constantes.VISION_FOU;
+		} else {
+			vision = Constantes.VISION;
+		}
+		
 		boolean res = courant.getElement().estVivant() &&
-				Calculs.distanceChebyshev(voisin.getPosition(), courant.getPosition()) <= Constantes.VISION;
+				Calculs.distanceChebyshev(voisin.getPosition(), courant.getPosition()) <= vision;
 		
 		if(voisin instanceof VuePersonnage) { // potion
 			res = res && 
@@ -702,6 +711,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		
 		VuePersonnage vuePersonnage = personnages.get(refRMI);
 		VuePotion vuePotion = potions.get(refPotion);
+
 		
 		if (vuePersonnage.isActionExecutee()) {
 			// si une action a deja ete executee
@@ -733,7 +743,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		
 		VuePersonnage client = personnages.get(refRMI);
 		VuePersonnage clientAdv = personnages.get(refRMIAdv);
-		
+	
 		if (personnages.get(refRMI).isActionExecutee()) {
 			// si une action a deja ete executee
 			logActionDejaExecutee(refRMI);
