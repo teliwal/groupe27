@@ -71,7 +71,7 @@ public class StrategieZombie extends Strategie{
 					arene.lanceAttaque(refRMI, refCible);
 					if(elemPlusProche.getCaract(Caracteristique.VIE) < 1 || elemPlusProche.getCaract(Caracteristique.VIE) == null){
 						if(elemPlusProche.getGroupe().equals("Prince")){
-							//console.getPersonnage().tuerPrince();
+							
 						}
 					}
 				}
