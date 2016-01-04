@@ -62,6 +62,12 @@ public class Constantes {
 	public static final int DISTANCE_MIN_INTERACTION = 2;
 
 	/**
+	 * Distance minimale entre deux elements pour qu'une interaction soit
+	 * possible pour le personage Hulk.
+	 */
+	public static final int DISTANCE_MIN_INTERACTION_HULK = 5;
+	
+	/**
 	 * Abscisse minimale de l'arene.
 	 */
 	public static final int XMIN_ARENE = 0;

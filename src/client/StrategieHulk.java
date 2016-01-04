@@ -60,7 +60,7 @@ public class StrategieHulk extends Strategie {
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
 
-			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION) { // si suffisamment proches
+			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION_HULK) { // si suffisamment proches
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage
