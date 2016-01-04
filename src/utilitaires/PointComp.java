@@ -24,6 +24,7 @@ public class PointComp extends Point implements Comparator<Point> {
 	 */
 	public PointComp(Point p) {
 		super(p.x, p.y);
+		
 	}
 
 	/**
