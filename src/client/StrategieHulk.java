@@ -21,6 +21,7 @@ public class StrategieHulk extends Strategie {
 		logger.info("Lanceur", "Creation de la console...");
 		
 		try {
+			caracts.put(Caracteristique.FORCE, Caracteristique.FORCE.getMax());
 			console = new Console(ipArene, port, ipConsole, this, 
 					new PersonnageHulk(nom, caracts), 
 					nbTours, position, logger);
