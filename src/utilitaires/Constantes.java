@@ -87,6 +87,15 @@ public class Constantes {
 	public static final Color COULEUR_MORTS = new Color(112, 112, 112);
 	
 	/**
+	 * Vie de la potion Soigneur
+	 */
+	public static final int SOIGN_VIE = 10;
+	
+	/**
+	 * Force de la potion Soigneur
+	 */
+	public static int SOIGN_FORCE = 5;
+	/**
 	 * Retourne le nom de la classe de l'objet passe en parametre, sous 
 	 * forme de chaine de caracteres.
 	 * @param o object

@@ -20,4 +20,5 @@ public class Potion extends Element {
 	public Potion(String nom, String groupe, HashMap<Caracteristique, Integer> caracts) {
 		super(nom, groupe, caracts);
 	}
+	
 }
