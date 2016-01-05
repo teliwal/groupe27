@@ -8,7 +8,6 @@ import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
-import serveur.element.PersonnageBasique;
 import serveur.element.PersonnagePrince;
 import serveur.element.Potion;
 import utilitaires.Calculs;
