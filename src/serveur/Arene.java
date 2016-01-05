@@ -720,9 +720,15 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		} else {
 			// sinon, on tente de jouer l'interaction
 			int distance = Calculs.distanceChebyshev(vuePersonnage.getPosition(), vuePotion.getPosition());
-			
+	
+			int testDistance;
+			if(nomRaccourciClient(refRMI).endsWith("Hulk)")){
+				testDistance = Constantes.DISTANCE_MIN_INTERACTION_HULK;
+			}else{
+				testDistance = Constantes.DISTANCE_MIN_INTERACTION;
+			}
 			// on teste la distance entre le personnage et la potion
-			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
+			if (distance <= testDistance) {
 				new Ramassage(this, vuePersonnage, vuePotion).interagit();
 				personnages.get(refRMI).executeAction();
 				

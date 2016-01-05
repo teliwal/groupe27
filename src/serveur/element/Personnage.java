@@ -13,7 +13,7 @@ import utilitaires.Calculs;
  * 
  */
 public abstract class Personnage extends Element {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	/**

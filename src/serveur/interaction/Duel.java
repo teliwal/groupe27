@@ -38,7 +38,7 @@ public class Duel extends Interaction<VuePersonnage> {
 
 			// ejection du defenseur
 			defenseur.setPosition(positionEjection);
-
+			
 			// degats
 			if (perteVie > 0) {
 				arene.incrementeCaractElement(defenseur, Caracteristique.VIE, -perteVie);
@@ -50,7 +50,6 @@ public class Duel extends Interaction<VuePersonnage> {
 			// initiative
 			incrementeInitiative(defenseur);
 			decrementeInitiative(attaquant);
-			
 		} catch (RemoteException e) {
 			logs(Level.INFO, "\nErreur lors d'une attaque : " + e.toString());
 		}
