@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import client.StrategieHulk;
 import client.StrategiePersonnage;
+import client.StrategiePrince;
 import client.StrategieZombie;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
@@ -84,6 +85,10 @@ public class LancePersonnage {
 			position = Calculs.positionAleatoireArene();
 			nom = "Zombie";
 			new StrategieZombie(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Zombie reussie");
+			position = Calculs.positionAleatoireArene();
+			nom = "Prince";
+			new StrategiePrince(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Zombie reussie");
 			position = Calculs.positionAleatoireArene();
 			nom = "hulk";

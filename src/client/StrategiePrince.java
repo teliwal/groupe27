@@ -8,21 +8,35 @@ import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
+import serveur.element.PersonnageBasique;
 import serveur.element.PersonnagePrince;
-import serveur.element.PersonnageZombie;
 import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 import client.controle.Console;
 
-public class StrategieZombie extends Strategie{
-	public StrategieZombie(String ipArene, int port, String ipConsole, String nom, String groupe,
-			HashMap<Caracteristique, Integer> caracts, int nbTours, Point position, LoggerProjet logger) {
+public class StrategiePrince extends Strategie{
+
+	/**
+	 * Cree un personnage, la console associe et sa strategie.
+	 * @param ipArene ip de communication avec l'arene
+	 * @param port port de communication avec l'arene
+	 * @param ipConsole ip de la console du personnage
+	 * @param nom nom du personnage
+	 * @param groupe groupe d'etudiants du personnage
+	 * @param nbTours nombre de tours pour ce personnage (si negatif, illimite)
+	 * @param position position initiale du personnage dans l'arene
+	 * @param logger gestionnaire de log
+	 */
+	public StrategiePrince(String ipArene, int port, String ipConsole, 
+			String nom, String groupe, HashMap<Caracteristique, Integer> caracts,
+			int nbTours, Point position, LoggerProjet logger) {
+		
 		logger.info("Lanceur", "Creation de la console...");
 		
 		try {
 			console = new Console(ipArene, port, ipConsole, this, 
-					new PersonnageZombie(nom, caracts), 
+					new PersonnagePrince(nom, groupe, caracts), 
 					nbTours, position, logger);
 			logger.info("Lanceur", "Creation de la console reussie");
 			
@@ -32,6 +46,15 @@ public class StrategieZombie extends Strategie{
 		}
 	}
 
+	// TODO etablir une strategie afin d'evoluer dans l'arene de combat
+	// une proposition de strategie (simple) est donnee ci-dessous
+	/** 
+	 * Decrit la strategie.
+	 * Les methodes pour evoluer dans le jeu doivent etre les methodes RMI
+	 * de Arene et de ConsolePersonnage. 
+	 * @param voisins element voisins de cet element (elements qu'il voit)
+	 * @throws RemoteException
+	 */
 	public void executeStrategie(HashMap<Integer, Point> voisins) throws RemoteException {
 		// arene
 		IArene arene = console.getArene();
@@ -69,12 +92,7 @@ public class StrategieZombie extends Strategie{
 				} else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
-					if(elemPlusProche instanceof PersonnagePrince){
-							console.getPersonnageZombie().tuerPrince();
-							((PersonnagePrince) elemPlusProche).tue();
-					}else{
-						arene.lanceAttaque(refRMI, refCible);
-					}
+					arene.lanceAttaque(refRMI, refCible);
 				}
 				
 			} else { // si voisins, mais plus eloignes
@@ -84,5 +102,6 @@ public class StrategieZombie extends Strategie{
 			}
 		}
 	}
+
 
 }
