@@ -10,14 +10,34 @@ public class PersonnageZombie extends Personnage{
    */
 	private static final long serialVersionUID = 1L;
 	private int vies = 2;
-	private int vieInitiale;
-	private int forceInitiale;
+	private Integer vieInitiale;
+	private Integer forceInitiale;
 
+	public int getVies() {
+		return vies;
+	}
+	public void setVies(int vies) {
+		this.vies = vies;
+	}
+	public Integer getVieInitiale() {
+		return vieInitiale;
+	}
+	public void setVieInitiale(Integer vieInitiale) {
+		this.vieInitiale = vieInitiale;
+	}
+	public Integer getForceInitiale() {
+		return forceInitiale;
+	}
+	public void setForceInitiale(Integer forceInitiale) {
+		this.forceInitiale = forceInitiale;
+	}
 
 	public PersonnageZombie(String nom,	HashMap<Caracteristique, Integer> caracts) {
 		super(nom, "Zombie", caracts);
-		setVieInitiale(caracts.get(Caracteristique.VIE));
-		setForceInitiale(caracts.get(Caracteristique.FORCE));
+		Integer initVie = caracts.get(Caracteristique.VIE);
+		Integer initForce = caracts.get(Caracteristique.VIE);
+		setVieInitiale(initVie);
+		setForceInitiale(initForce);
 	}
 	
 	/**
@@ -25,7 +45,7 @@ public class PersonnageZombie extends Personnage{
 	 */
 	public void tue() {
 		this.setVies(this.getVies() - 1);
-		if( this.getVies() == 0){
+		if( this.getVies() == 1){
 			caracts.put(Caracteristique.VIE, (int)getVieInitiale()/4);
 			caracts.put(Caracteristique.FORCE, (int)getForceInitiale()/4);
 		}else{
@@ -40,7 +60,16 @@ public class PersonnageZombie extends Personnage{
 	 */
 	public boolean estVivant() {
 		Integer vie = caracts.get(Caracteristique.VIE);
-		return vie != null && vie > 0 && vies != 0;
+		if(vie == null || vie < 1){
+			this.setVies(this.getVies() - 1);
+		}
+		if( this.getVies() == 1){
+			caracts.put(Caracteristique.VIE, (int)getVieInitiale()/4);
+			caracts.put(Caracteristique.FORCE, (int)getForceInitiale()/4);
+			return true;
+		}else{
+			return vie != null && vie > 0 ;
+		}
 	}
 	
 	/**
@@ -51,23 +80,5 @@ public class PersonnageZombie extends Personnage{
 		caracts.put(Caracteristique.VIE, getVieInitiale());
 		caracts.put(Caracteristique.FORCE, getForceInitiale());
 	}
-	
-	public int getVies() {
-		return vies;
-	}
-	public void setVies(int vies) {
-		this.vies = vies;
-	}
-	public int getVieInitiale() {
-		return vieInitiale;
-	}
-	public void setVieInitiale(int vieInitiale) {
-		this.vieInitiale = vieInitiale;
-	}
-	public int getForceInitiale() {
-		return forceInitiale;
-	}
-	public void setForceInitiale(int forceInitiale) {
-		this.forceInitiale = forceInitiale;
-	}
+
 }

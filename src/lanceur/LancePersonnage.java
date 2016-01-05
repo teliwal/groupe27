@@ -82,13 +82,15 @@ public class LancePersonnage {
 			new StrategiePersonnage(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du personnage reussie");
 			position = Calculs.positionAleatoireArene();
-			nom = "hulk";
-			new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
-			logger.info("Lanceur", "Creation du Hulk reussie");
-			position = Calculs.positionAleatoireArene();
 			nom = "Zombie";
 			new StrategieZombie(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Zombie reussie");
+			/*position = Calculs.positionAleatoireArene();
+			nom = "hulk";
+			new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Hulk reussie");
+			*/
+			
 			
 		} catch (Exception e) {
 			logger.severe("Lanceur", "Erreur lancement :\n" + e.getCause());
