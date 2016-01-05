@@ -21,8 +21,17 @@ public enum Caracteristique {
 	/**
 	 * Initiative : definit l'ordre d'action des personnages lors d'un tour de jeu. 
 	 */
-	INITIATIVE("Initiative", "INIT", 0, 200, 50);
+	INITIATIVE("Initiative", "INIT", 0, 200, 50),
 	
+	/**
+	 * Vue : nombre de points de vue
+	 */
+	VUE ("Vue", "VUE", 5, 40, 30),
+	
+	/**
+	 * Vitesse : nombre de points de vitesse
+	 */
+	VITESSE("Vitesse","VITESSE",1,5,10);
 	/**
 	 * Nom complet.
 	 */

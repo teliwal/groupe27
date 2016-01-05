@@ -52,7 +52,7 @@ public class StrategieFou extends Strategie{
 		IArene arene = console.getArene();
 		
 		//le personnage qui attaque
-		Personnage attaquant ;
+		Element attaquant ;
 		
 		//distance entre deux personnages
 		int distance;
@@ -75,7 +75,7 @@ public class StrategieFou extends Strategie{
 			arene.deplace(refRMI, 0); 
 			
 		} else {
-			int refCible = Calculs.chercheElementProche(position, voisins);
+			int refCible = Calculs.chercheElementProche(arene,refRMI,position, voisins);
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
