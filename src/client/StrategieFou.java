@@ -28,7 +28,7 @@ public class StrategieFou extends Strategie{
 		
 		try {
 			console = new Console(ipArene, port, ipConsole, this, 
-					new Personnage(nom, groupe, caracts), 
+					new PersonnageFou(groupe, caracts), 
 				nbTours, position, logger);
 			logger.info("Lanceur", "Creation de la console reussie");
 			

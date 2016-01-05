@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.HashMap;
 
-import client.StrategieHulk;
 import client.StrategiePersonnage;
 import client.StrategieZombie;
 import logger.LoggerProjet;

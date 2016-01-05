@@ -12,7 +12,7 @@ import utilitaires.Calculs;
  * de jouer une strategie.
  * 
  */
-public class Personnage extends Element {
+public abstract class Personnage extends Element {
 	
 	private static final long serialVersionUID = 1L;
 

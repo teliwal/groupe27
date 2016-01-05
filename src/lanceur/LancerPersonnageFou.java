@@ -6,8 +6,6 @@ import java.net.InetAddress;
 import java.util.HashMap;
 
 import client.StrategieFou;
-import client.StrategieHulk;
-import client.StrategiePersonnage;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import utilitaires.Calculs;
