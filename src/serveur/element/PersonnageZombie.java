@@ -46,8 +46,8 @@ public class PersonnageZombie extends Personnage{
 	public void tue() {
 		this.setVies(this.getVies() - 1);
 		if( this.getVies() == 1){
-			caracts.put(Caracteristique.VIE, (int)(getVieInitiale()/4));
-			caracts.put(Caracteristique.FORCE, (int)(getForceInitiale()/4));
+			caracts.put(Caracteristique.VIE, 20);
+			caracts.put(Caracteristique.FORCE, 20);
 		}else{
 			caracts.put(Caracteristique.VIE, 0);
 		}	
@@ -64,11 +64,13 @@ public class PersonnageZombie extends Personnage{
 			this.setVies(this.getVies() - 1);
 		}
 		if( this.getVies() == 1){
-			caracts.put(Caracteristique.VIE, (int)(getVieInitiale()/4));
-			caracts.put(Caracteristique.FORCE, (int)(getForceInitiale()/4));
+			caracts.put(Caracteristique.VIE, 20);
+			caracts.put(Caracteristique.FORCE, 20);
 			return true;
-		}else{
+		}else if ( this.getVies() < 1){ 
 			return vie != null && vie > 0 ;
+		}else{
+			return true;
 		}
 	}
 	
