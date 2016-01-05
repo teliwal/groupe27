@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.HashMap;
 
+import client.StrategieHulk;
 import client.StrategiePersonnage;
 import client.StrategieZombie;
 import logger.LoggerProjet;
@@ -84,11 +85,11 @@ public class LancePersonnage {
 			nom = "Zombie";
 			new StrategieZombie(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Zombie reussie");
-			/*position = Calculs.positionAleatoireArene();
+			position = Calculs.positionAleatoireArene();
 			nom = "hulk";
 			new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Hulk reussie");
-			*/
+			
 			
 			
 		} catch (Exception e) {
