@@ -64,12 +64,12 @@ public class PersonnageZombie extends Personnage{
 		Integer vie = caracts.get(Caracteristique.VIE);
 		if(vie == null || vie < 1){
 			this.setVies(this.getVies() - 1);
-			tue = true;
 		}
 		if( this.getVies() == 1){
-			if(tue != true){
+			if(tue == false){
 				caracts.put(Caracteristique.VIE, 20);
 				caracts.put(Caracteristique.FORCE, 20);
+				tue = true;
 			}
 			return true;
 		}else if ( this.getVies() < 1){ 

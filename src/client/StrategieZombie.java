@@ -69,7 +69,7 @@ public class StrategieZombie extends Strategie{
 				} else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
-					if(elemPlusProche instanceof PersonnagePrince){
+					if(elemPlusProche.getGroupe().equals("Prince")){
 							console.getPersonnageZombie().tuerPrince();
 							((PersonnagePrince) elemPlusProche).tue();
 					}else{

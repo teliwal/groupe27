@@ -36,7 +36,7 @@ public class StrategiePrince extends Strategie{
 		
 		try {
 			console = new Console(ipArene, port, ipConsole, this, 
-					new PersonnagePrince(nom, groupe, caracts), 
+					new PersonnagePrince(nom, caracts), 
 					nbTours, position, logger);
 			logger.info("Lanceur", "Creation de la console reussie");
 			
