@@ -11,6 +11,7 @@ import client.Strategie;
 import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Personnage;
+import serveur.element.PersonnageZombie;
 import utilitaires.Constantes;
 
 /**
@@ -174,6 +175,11 @@ public class Console extends UnicastRemoteObject implements IConsole {
 	@Override
 	public Personnage getPersonnage() throws RemoteException {
 		return (Personnage) arene.elementFromConsole(this);
+	}
+	
+	@Override
+	public PersonnageZombie getPersonnageZombie() throws RemoteException {
+		return (PersonnageZombie) arene.elementFromConsole(this);
 	}
 
 	@Override

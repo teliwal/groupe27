@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import client.Strategie;
 import serveur.IArene;
 import serveur.element.Personnage;
+import serveur.element.PersonnageZombie;
 
 /**
  * Contient les methodes RMI associees au controle d'un personnage,
@@ -53,6 +54,13 @@ public interface IConsole extends Remote {
 	 * @throws RemoteException
 	 */
 	public Personnage getPersonnage() throws RemoteException;
+	
+	/**
+	 * Recupere le personnage de la console.
+	 * @return personnage Zombie serveur
+	 * @throws RemoteException
+	 */
+	public PersonnageZombie getPersonnageZombie() throws RemoteException;
 
 	/**
 	 * Definit la phrase que la console va dire (et qui sera affichee dans 

@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import client.StrategieHulk;
 import client.StrategiePersonnage;
+import client.StrategieZombie;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import utilitaires.Calculs;
@@ -84,6 +85,10 @@ public class LancePersonnage {
 			nom = "hulk";
 			new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Hulk reussie");
+			position = Calculs.positionAleatoireArene();
+			nom = "Zombie";
+			new StrategieZombie(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Zombie reussie");
 			
 		} catch (Exception e) {
 			logger.severe("Lanceur", "Erreur lancement :\n" + e.getCause());

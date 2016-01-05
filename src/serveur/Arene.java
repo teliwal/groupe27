@@ -745,9 +745,14 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			
 			int distance = Calculs.distanceChebyshev(personnages.get(refRMI).getPosition(), 
 					personnages.get(refRMIAdv).getPosition());
-
+			int testDistance;
+			if(nomRaccourciClient(refRMI).endsWith("Hulk)")){
+				testDistance = Constantes.DISTANCE_MIN_INTERACTION_HULK;
+			}else{
+				testDistance = Constantes.DISTANCE_MIN_INTERACTION;
+			}
 			// on teste la distance entre les personnages
-			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
+			if (distance <= testDistance) {
 				Personnage pers = (Personnage) elementFromRef(refRMI);
 				Personnage persAdv = (Personnage) elementFromRef(refRMIAdv);
 				
