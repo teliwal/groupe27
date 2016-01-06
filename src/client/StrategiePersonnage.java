@@ -99,7 +99,7 @@ public class StrategiePersonnage extends Strategie{
 			}
 
 			if(trouve && voisins.size() > 1){
-				console.setPhrase("J'évite Hulk");
+				console.setPhrase("J'ï¿½vite Hulk");
 				Point posHulk = voisins.get(refRmiVoisin);
 				Point myPos = position;
 				Point dir = new Point(myPos.x-posHulk.x,myPos.y-posHulk.y);
@@ -109,9 +109,14 @@ public class StrategiePersonnage extends Strategie{
 				//if(voisins.size() > 1 && voisins.)
 
 
-
+				int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
+				if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
+					testDistance = 1;
+				}else{
+					testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
+				}
 				//diminution de la zone d'attaque
-				if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION - arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)) { // si suffisamment proches
+				if(distPlusProche <= testDistance) { // si suffisamment proches
 					// j'interagis directement
 					if(elemPlusProche instanceof Potion) { // potion
 						// ramassage

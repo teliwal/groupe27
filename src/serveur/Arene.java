@@ -773,6 +773,12 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			}else{
 				testDistance = Constantes.DISTANCE_MIN_INTERACTION;
 			}
+			if(testDistance <= client.getElement().getCaract(Caracteristique.ZONEATTACK)){
+				testDistance = 1;
+			}else{
+				testDistance -= client.getElement().getCaract(Caracteristique.ZONEATTACK);
+			}
+			
 			// on teste la distance entre les personnages
 			if (distance <= testDistance) {
 				Personnage pers = (Personnage) elementFromRef(refRMI);

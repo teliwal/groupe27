@@ -2,6 +2,7 @@ package serveur.element;
 
 import java.util.HashMap;
 
+import utilitaires.Calculs;
 import utilitaires.Constantes;
 
 public class Mixte extends Potion{
@@ -14,8 +15,14 @@ public class Mixte extends Potion{
 	public Mixte(String nom, String groupe, HashMap<Caracteristique, Integer> caracts) {
 		super(nom, groupe, caracts);
 		// TODO Auto-generated constructor stub
-		this.caracts.put(Caracteristique.VUE, Constantes.DIM_VUE);
-		this.caracts.put(Caracteristique.FORCE, Constantes.AUG_FORCE);
+		
+		this.caracts.put(Caracteristique.VUE, Calculs.nombreAleatoire(0, 5));
+		this.caracts.put(Caracteristique.FORCE, Calculs.nombreAleatoire(-10, 10));
+		this.caracts.put(Caracteristique.VITESSE, Calculs.nombreAleatoire(-2, 3));
+		this.caracts.put(Caracteristique.ZONEATTACK, Calculs.nombreAleatoire(-1, 2));
+		this.caracts.put(Caracteristique.VIE, Calculs.nombreAleatoire(-10, 10));
+		this.caracts.put(Caracteristique.INITIATIVE, Calculs.nombreAleatoire(-10, 10));
+		
 	}
 
 }

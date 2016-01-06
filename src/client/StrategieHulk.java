@@ -60,8 +60,14 @@ public class StrategieHulk extends Strategie {
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
+			int testDistance = Constantes.DISTANCE_MIN_INTERACTION_HULK;
+			if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
+				testDistance = 1;
+			}else{
+				testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
+			}
 			//diminution de la zone d'attaque
-			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION_HULK - arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)) { 
+			if(distPlusProche <= testDistance) { // si suffisamment proches
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage

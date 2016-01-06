@@ -57,6 +57,11 @@ public class Constantes {
 	public static final int AUG_ZONE = 1;
 	
 	/**
+	 * valeur d'augmentation de la force
+	 */
+	public static final int AUG_FORCE = 15;
+	
+	/**
 	 * diminution de la zone d'attaque
 	 */
 	public static final int DIM_ZONE = -1;

@@ -83,14 +83,14 @@ public class StrategieFou extends Strategie{
 			// récuperation du personnage qui attaque
 			attaquant = (Personnage) arene.elementFromRef(refRMI);
 			
-			if(attaquant instanceof PersonnageFou) {
-				distance = Constantes.DISTANCE_MIN_INTERACTION_FOU;
-			} else {
-				distance = Constantes.DISTANCE_MIN_INTERACTION;
+			int testDistance = Constantes.DISTANCE_MIN_INTERACTION_FOU;
+			if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
+				testDistance = 1;
+			}else{
+				testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
 			}
-			
 			//diminution de la zone d'attaque
-			if(distPlusProche <= distance - arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)) { // si suffisamment proches
+			if(distPlusProche <= testDistance) { // si suffisamment proches
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage
