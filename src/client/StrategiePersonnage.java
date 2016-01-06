@@ -4,7 +4,6 @@ package client;
 import java.awt.Point;
 import java.rmi.RemoteException;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import client.controle.Console;
 import logger.LoggerProjet;
@@ -12,7 +11,6 @@ import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.PersonnageBasique;
-import serveur.element.PersonnageHulk;
 import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
@@ -87,27 +85,6 @@ public class StrategiePersonnage extends Strategie{
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
 
-			/*Si Hul*/
-			Integer refRmiVoisin = 0;
-			boolean trouve = false;	
-			Iterator<Integer> it = voisins.keySet().iterator();
-			Element elem = null;
-			while (!trouve && it.hasNext()) {
-				refRmiVoisin = it.next();
-				elem = arene.elementFromRef(refRmiVoisin);
-				trouve = elem instanceof PersonnageHulk ; 
-			}
-
-			if(trouve && voisins.size() > 1){
-				console.setPhrase("J'�vite Hulk");
-				Point posHulk = voisins.get(refRmiVoisin);
-				Point myPos = position;
-				Point dir = new Point(myPos.x-posHulk.x,myPos.y-posHulk.y);
-				arene.deplace(refRMI, new Point(myPos.x+2*dir.x,myPos.y+2*dir.y));
-			}else{
-
-				//if(voisins.size() > 1 && voisins.)
-
 
 				int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
 				if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
@@ -135,7 +112,7 @@ public class StrategiePersonnage extends Strategie{
 					arene.deplace(refRMI, refCible);
 				}
 			}
-		}
+		
 	}
 
 

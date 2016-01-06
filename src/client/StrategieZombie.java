@@ -56,8 +56,14 @@ public class StrategieZombie extends Strategie{
 		} else {
 			int refCible = Calculs.chercheElementProche(arene,refRMI,position, voisins);
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
-
+			
 			Element elemPlusProche = arene.elementFromRef(refCible);
+			for(int refVoisin : voisins.keySet()) {
+				if(arene.elementFromRef(refVoisin) instanceof PersonnagePrince){
+					elemPlusProche = arene.elementFromRef(refVoisin);
+				}
+			}
+			
 			int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
 			if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
 				testDistance = 1;
@@ -75,12 +81,7 @@ public class StrategieZombie extends Strategie{
 				} else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
-					if(elemPlusProche.getGroupe().equals("Prince")){
-							console.getPersonnageZombie().tuerPrince();
-							((PersonnagePrince) elemPlusProche).tue();
-					}else{
-						arene.lanceAttaque(refRMI, refCible);
-					}
+					arene.lanceAttaque(refRMI, refCible);
 				}
 				
 			} else { // si voisins, mais plus eloignes

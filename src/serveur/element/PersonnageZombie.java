@@ -84,8 +84,8 @@ public class PersonnageZombie extends Personnage{
 	 */
 	public void tuerPrince() {
 		setVies(2);
-		caracts.put(Caracteristique.VIE, (int)getVieInitiale());
-		caracts.put(Caracteristique.FORCE, (int)getForceInitiale());
+		caracts.put(Caracteristique.VIE, Caracteristique.VIE.getInit());
+		caracts.put(Caracteristique.FORCE, Caracteristique.FORCE.getInit());
 		tue = false;
 	}
 
