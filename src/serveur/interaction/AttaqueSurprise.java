@@ -7,28 +7,22 @@ import java.util.logging.Level;
 import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
-import serveur.element.PersonnagePrince;
-import serveur.element.PersonnageZombie;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
-/**
- * Represente un duel entre deux personnages.
- *
- */
-public class Duel extends Interaction<VuePersonnage> {
-	
+public class AttaqueSurprise extends Interaction<VuePersonnage> {
 	/**
-	 * Cree une interaction de duel.
+	 * Cree une interaction de attaque surprise
 	 * @param arene arene
 	 * @param attaquant attaquant
 	 * @param defenseur defenseur
 	 */
-	public Duel(Arene arene, VuePersonnage attaquant, VuePersonnage defenseur) {
+	public AttaqueSurprise(Arene arene, VuePersonnage attaquant, VuePersonnage defenseur) {
 		super(arene, attaquant, defenseur);
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void interagit() {
 		try {
@@ -45,21 +39,17 @@ public class Duel extends Interaction<VuePersonnage> {
 			
 			// ejection du defenseur
 			defenseur.setPosition(positionEjection);
-			arene.incrementeCaractElement(defenseur, Caracteristique.DEFENSE, -perteVie/5);
-			arene.incrementeCaractElement(attaquant, Caracteristique.FORCE, -(defenseDefenseur/10));
+			
 				// degats
 				if (perte > 0) {
-					arene.incrementeCaractElement(defenseur, Caracteristique.VIE, -perte);
-					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle une beigne ("
-							+ perte + " points de degats) a " + Constantes.nomRaccourciClient(defenseur));
+					arene.incrementeCaractElement(defenseur, Caracteristique.DEFENSE, -perte/2);
+					arene.incrementeCaractElement(attaquant, Caracteristique.FORCE, -5);
+					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle une pique ("
+							+ perte/2 + " points de degats) a " + Constantes.nomRaccourciClient(defenseur));
 				}else{
-					arene.incrementeCaractElement(attaquant, Caracteristique.VIE, -5);
-					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " echec attaque a "
+					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " echec attaque surprise a "
 							 + Constantes.nomRaccourciClient(defenseur));
 				}
-				// initiative
-				incrementeInitiative(defenseur);
-				decrementeInitiative(attaquant);
 			
 		} catch (RemoteException e) {
 			logs(Level.INFO, "\nErreur lors d'une attaque : " + e.toString());

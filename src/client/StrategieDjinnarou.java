@@ -62,8 +62,14 @@ public class StrategieDjinnarou extends Strategie {
 
 					Element elemPlusProche = arene.elementFromRef(refCible);
 
+					int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
+					if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
+						testDistance = 1;
+					}else{
+						testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
+					}
 					//diminution de la zone d'attaque
-					if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION ) { 
+					if(distPlusProche <= testDistance) { 
 						// j'interagis directement
 						if(elemPlusProche instanceof Potion) { // potion
 							// ramassage

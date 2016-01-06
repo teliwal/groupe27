@@ -29,13 +29,17 @@ public enum Caracteristique {
 	VUE ("Vue", "VUE", 5, 40, 30),
 	
 	/**
-	 * Vue : nombre de points de vue
+	 * ZoneAttack : nombre de points de la zone d'attaque
 	 */
 	ZONEATTACK ("ZoneAttack", "ZONEATTACK", 0, 5, 3),
 	/**
 	 * Vitesse : nombre de points de vitesse
 	 */
 	VITESSE("Vitesse","VITESSE",1,10,2),
+	/**
+	 * Defense : nombre de points de defense
+	 */
+	DEFENSE("Defense","DEFENSE",0,50,20),
 	/**
 	 * 
 	 */

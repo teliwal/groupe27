@@ -7,34 +7,31 @@ import java.util.logging.Level;
 import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
-import serveur.element.PersonnagePrince;
-import serveur.element.PersonnageZombie;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
-/**
- * Represente un duel entre deux personnages.
- *
- */
-public class Duel extends Interaction<VuePersonnage> {
-	
+public class Combat extends Interaction<VuePersonnage> {
 	/**
-	 * Cree une interaction de duel.
+	 * Cree une interaction de duel contre Jedi & Hulk
 	 * @param arene arene
 	 * @param attaquant attaquant
 	 * @param defenseur defenseur
 	 */
-	public Duel(Arene arene, VuePersonnage attaquant, VuePersonnage defenseur) {
+	public Combat(Arene arene, VuePersonnage attaquant, VuePersonnage defenseur) {
 		super(arene, attaquant, defenseur);
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void interagit() {
+		// TODO Auto-generated method stub
 		try {
 			Personnage pAttaquant = attaquant.getElement();
 			Personnage pDefenseur = defenseur.getElement();
-			int forceAttaquant = pAttaquant.getCaract(Caracteristique.FORCE);
+			
+			int forceAttaquant = pAttaquant.getCaract(Caracteristique.FORCE)*2;
+			int forceDefenseur = pDefenseur.getCaract(Caracteristique.FORCE);
 			int defenseDefenseur = pDefenseur.getCaract(Caracteristique.DEFENSE);
 			int perteVie = forceAttaquant;
 		
@@ -45,15 +42,16 @@ public class Duel extends Interaction<VuePersonnage> {
 			
 			// ejection du defenseur
 			defenseur.setPosition(positionEjection);
-			arene.incrementeCaractElement(defenseur, Caracteristique.DEFENSE, -perteVie/5);
-			arene.incrementeCaractElement(attaquant, Caracteristique.FORCE, -(defenseDefenseur/10));
+			arene.incrementeCaractElement(defenseur, Caracteristique.DEFENSE, -perteVie);
+			
 				// degats
 				if (perte > 0) {
 					arene.incrementeCaractElement(defenseur, Caracteristique.VIE, -perte);
-					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle une beigne ("
+					arene.incrementeCaractElement(attaquant, Caracteristique.FORCE, forceDefenseur/10);
+					arene.incrementeCaractElement(attaquant, Caracteristique.VIE, 10);
+					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle un marteau ("
 							+ perte + " points de degats) a " + Constantes.nomRaccourciClient(defenseur));
 				}else{
-					arene.incrementeCaractElement(attaquant, Caracteristique.VIE, -5);
 					logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " echec attaque a "
 							 + Constantes.nomRaccourciClient(defenseur));
 				}
