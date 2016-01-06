@@ -202,7 +202,7 @@ public interface IArene extends Remote {
 	public boolean deplace(int refRMI, Point objectif) throws RemoteException;
 	
 	
-
+	public boolean donnerVie(int refRMI,int refCible) throws RemoteException;
 	
 
 	/**************************************************************************

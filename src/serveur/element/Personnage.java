@@ -26,6 +26,10 @@ public abstract class Personnage extends Element {
 		super(nom, groupe, caracts);
 	}
 	
+	public Personnage(String nom,String groupe)
+	{
+		super(nom,groupe);
+	}
 	/**
 	 * Incremente la caracteristique donnee de la valeur donnee.
 	 * Si la caracteristique n'existe pas, elle sera cree avec la valeur 
