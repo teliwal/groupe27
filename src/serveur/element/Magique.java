@@ -24,7 +24,7 @@ public class Magique extends Potion{
 		this.caracts.put(Caracteristique.INITIATIVE,Constantes.AUG_INITIATIVE);
 		this.caracts.put(Caracteristique.VUE, Constantes.AUG_VUE);
 		this.caracts.put(Caracteristique.VITESSE, Constantes.AUG_VITESSE);
-		
+		this.caracts.put(Caracteristique.ZONEATTACK, Constantes.AUG_ZONE);
 	}
 
 }

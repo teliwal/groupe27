@@ -9,6 +9,7 @@ import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
+import serveur.element.Magique;
 import serveur.element.PersonnageHulk;
 import serveur.element.Potion;
 import utilitaires.Calculs;
@@ -59,8 +60,8 @@ public class StrategieHulk extends Strategie {
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
-
-			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION_HULK) { // si suffisamment proches
+			//diminution de la zone d'attaque
+			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION_HULK - arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)) { 
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage

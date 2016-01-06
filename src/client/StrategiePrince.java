@@ -81,7 +81,8 @@ public class StrategiePrince extends Strategie{
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
 
-			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION) { // si suffisamment proches
+			//diminution de la zone d'attaque
+			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION - arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)) { // si suffisamment proches
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage

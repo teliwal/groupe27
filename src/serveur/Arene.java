@@ -770,8 +770,15 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			if(nomRaccourciClient(refRMI).endsWith("Hulk)")){
 				testDistance = Constantes.DISTANCE_MIN_INTERACTION_HULK;
 			}else{
-				testDistance = Constantes.DISTANCE_MIN_INTERACTION;
+				testDistance = Constantes.DISTANCE_MIN_INTERACTION ;
 			}
+			if(testDistance == personnages.get(refRMI).getElement().getCaract(Caracteristique.ZONEATTACK)){
+				testDistance = 1;
+			}else{
+				testDistance -= personnages.get(refRMI).getElement().getCaract(Caracteristique.ZONEATTACK);
+			}
+			console.log(Level.WARNING, "AVERTISSEMENT ARENE", 
+					nomRaccourciClient(refRMIAdv) + " " + distance + "<=" + testDistance);
 			// on teste la distance entre les personnages
 			if (distance <= testDistance) {
 				Personnage pers = (Personnage) elementFromRef(refRMI);

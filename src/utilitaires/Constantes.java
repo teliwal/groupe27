@@ -52,6 +52,11 @@ public class Constantes {
 	public static final int AUG_VUE = 3;
 	
 	/**
+	 * valeur d'augmentation de la zone d'attaque
+	 */
+	public static final int AUG_ZONE = 1;
+	
+	/**
 	 *Augmente l'initiative 
 	 */
 	public static final int AUG_INITIATIVE = 5;
@@ -84,13 +89,13 @@ public class Constantes {
 	 * Distance minimale entre deux elements pour qu'une interaction soit
 	 * possible. 
 	 */
-	public static final int DISTANCE_MIN_INTERACTION = 2;
+	public static final int DISTANCE_MIN_INTERACTION = 5;
 
 	/**
 	 * Distance minimale entre deux elements pour qu'une interaction soit
 	 * possible pour le personage Hulk.
 	 */
-	public static final int DISTANCE_MIN_INTERACTION_HULK = 5;
+	public static final int DISTANCE_MIN_INTERACTION_HULK = 7;
 	
 	/**
 	 * Abscisse minimale de l'arene.

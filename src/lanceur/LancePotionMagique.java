@@ -6,6 +6,7 @@ import java.util.HashMap;
 import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
+import serveur.element.Magique;
 import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
@@ -67,7 +68,7 @@ public class LancePotionMagique {
 			caractsPotion.put(Caracteristique.INITIATIVE, 9);
 			
 			// ajout de la potion
-			arene.ajoutePotion(new Potion(nom, groupe, caractsPotion), Calculs.positionAleatoireArene());
+			arene.ajoutePotion(new Magique(nom, groupe, caractsPotion), Calculs.positionAleatoireArene());
 			logger.info("Lanceur", "Lancement de la potion reussi");
 			
 		} catch (Exception e) {

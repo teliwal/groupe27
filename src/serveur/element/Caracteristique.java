@@ -29,6 +29,10 @@ public enum Caracteristique {
 	VUE ("Vue", "VUE", 5, 40, 30),
 	
 	/**
+	 * Vue : nombre de points de vue
+	 */
+	ZONEATTACK ("ZoneAttack", "ZONEATTACK", 0, 5, 3),
+	/**
 	 * Vitesse : nombre de points de vitesse
 	 */
 	VITESSE("Vitesse","VITESSE",1,10,5);
