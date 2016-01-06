@@ -12,6 +12,7 @@ import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.PersonnageHulk;
 import serveur.element.PersonnagePrince;
+import serveur.element.Poison;
 import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
@@ -96,7 +97,7 @@ public class StrategiePrince extends Strategie{
 			}
 
 			if(trouve && voisins.size() > 1){
-				console.setPhrase("J'�vite Hulk");
+				console.setPhrase("J evite Hulk");
 				Point posHulk = voisins.get(refRmiVoisin);
 				Point myPos = position;
 				Point dir = new Point(myPos.x-posHulk.x,myPos.y-posHulk.y);
@@ -116,10 +117,14 @@ public class StrategiePrince extends Strategie{
 				if(distPlusProche <= testDistance) { // si suffisamment proches
 					// j'interagis directement
 					if(elemPlusProche instanceof Potion) { // potion
-						// ramassage
-						console.setPhrase("Je ramasse une potion");
-						arene.ramassePotion(refRMI, refCible);
-
+						//si Poison -> evite
+						if(elemPlusProche instanceof Poison){
+							console.setPhrase("Je evite le Poison");
+						}else{
+							//sinon ramassage
+							console.setPhrase("Je ramasse une potion");
+							arene.ramassePotion(refRMI, refCible);
+						}
 					} else { // personnage
 						// duel
 						console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
