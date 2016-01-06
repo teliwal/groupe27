@@ -54,15 +54,16 @@ public class StrategieZombie extends Strategie{
 			arene.deplace(refRMI, 0); 
 			
 		} else {
-			for(int i = 0;i<voisins.size();i++){
-				if(voisins.get(i) instanceof PersonnagePrince){
-					
-				}
-			}
 			int refCible = Calculs.chercheElementProche(arene,refRMI,position, voisins);
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 			
 			Element elemPlusProche = arene.elementFromRef(refCible);
+			for(int refVoisin : voisins.keySet()) {
+				if(arene.elementFromRef(refVoisin) instanceof PersonnagePrince){
+					elemPlusProche = arene.elementFromRef(refVoisin);
+				}
+			}
+			
 			int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
 			if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
 				testDistance = 1;
