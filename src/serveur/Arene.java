@@ -725,12 +725,8 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// sinon, on tente de jouer l'interaction
 			int distance = Calculs.distanceChebyshev(vuePersonnage.getPosition(), vuePotion.getPosition());
 	
-			int testDistance;
-			if(nomRaccourciClient(refRMI).endsWith("Hulk)")){
-				testDistance = Constantes.DISTANCE_MIN_INTERACTION_HULK;
-			}else{
-				testDistance = Constantes.DISTANCE_MIN_INTERACTION;
-			}
+			int testDistance = vuePersonnage.getElement().getCaract(Caracteristique.ZONEATTACK);
+			
 			// on teste la distance entre le personnage et la potion
 			if (distance <= testDistance) {
 				new Ramassage(this, vuePersonnage, vuePotion).interagit();
@@ -800,19 +796,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			
 			int distance = Calculs.distanceChebyshev(personnages.get(refRMI).getPosition(), 
 					personnages.get(refRMIAdv).getPosition());
-			int testDistance;
-			if(nomRaccourciClient(refRMI).endsWith("Hulk)")){
-				testDistance = Constantes.DISTANCE_MIN_INTERACTION_HULK;
-			}else{
-				testDistance = Constantes.DISTANCE_MIN_INTERACTION;
-			}
-			if(testDistance <= client.getElement().getCaract(Caracteristique.ZONEATTACK)){
-				testDistance = 1;
-			}else{
-				testDistance -= client.getElement().getCaract(Caracteristique.ZONEATTACK);
-			}
+			int testDistance = client.getElement().getCaract(Caracteristique.ZONEATTACK);
 			
-			// on teste la distance entre les personnages
+			// on teste la distance entre le personnage et la potion
 			if (distance <= testDistance) {
 				Personnage pers = (Personnage) elementFromRef(refRMI);
 				Personnage persAdv = (Personnage) elementFromRef(refRMIAdv);

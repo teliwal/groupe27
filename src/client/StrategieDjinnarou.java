@@ -72,10 +72,11 @@ public class StrategieDjinnarou extends Strategie {
 						if(elemPlusProche instanceof Potion) { // potion
 							// ramassage
 							TesterPotion teste = new TesterPotion();
+							//Si potion est avantageuse je la prend
 							if(teste.forceAvantageuse((Potion) elemPlusProche)){
 								console.setPhrase("Je ramasse une potion");
 								arene.ramassePotion(refRMI, refCible);
-							}else{
+							}else if(teste.estPoison((Potion) elemPlusProche)){//si c'est poison, je la garde
 								console.setPhrase("Je garde une potion");
 								arene.garderPotion(refRMI, refCible);
 							}
@@ -98,8 +99,14 @@ public class StrategieDjinnarou extends Strategie {
 						{
 							Malin el = (Malin) arene.elementFromRef(refRMI);
 							if(!el.getList().isEmpty()){
+								for(int i = 0;i < el.getList().size();i++){
+									if(el.getPotion(i) != null){
+										deposerPotion(arene, arene.getPosition(refCible),el.getPotion(i));
+										i = el.getList().size();
+									}
+								}
 								console.setPhrase("Je depose une potion vers mon voisin " + elemPlusProche.getNom());
-								deposerPotion(arene, arene.getPosition(refCible),el.getPotion(0));
+								
 							}else{
 								console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
 								arene.deplace(refRMI, refCible);

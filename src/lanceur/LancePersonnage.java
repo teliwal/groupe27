@@ -6,6 +6,11 @@ import java.net.InetAddress;
 import java.util.HashMap;
 
 import client.StrategieDjinnarou;
+import client.StrategieFou;
+import client.StrategieHulk;
+import client.StrategieJedi;
+import client.StrategiePrince;
+import client.StrategieZombie;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import utilitaires.Calculs;
@@ -79,18 +84,30 @@ public class LancePersonnage {
 			
 			new StrategieDjinnarou(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du djinnarou reussie");
-			/*position = Calculs.positionAleatoireArene();
+			position = Calculs.positionAleatoireArene();
 			nom = "Zombie";
 			new StrategieZombie(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Zombie reussie");
 			position = Calculs.positionAleatoireArene();
-			nom = "Prince";
+			/*nom = "Prince";
 			new StrategiePrince(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
-			logger.info("Lanceur", "Creation du Zombie reussie");
+			logger.info("Lanceur", "Creation du Zombie reussie");*/
 			position = Calculs.positionAleatoireArene();
 			nom = "hulk";
-			//new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
-			//logger.info("Lanceur", "Creation du Hulk reussie");*/
+			new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Hulk reussie");
+			position = Calculs.positionAleatoireArene();
+			nom = "Jedi";
+			new StrategieJedi(ipArene, port, ipConsole, nom, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Zombie reussie");
+			position = Calculs.positionAleatoireArene();
+			nom = "Djinnarou";
+			new StrategieDjinnarou(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Zombie reussie");
+			position = Calculs.positionAleatoireArene();
+			nom = "Fou";
+			new StrategieFou(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Hulk reussie");
 			
 			
 			
