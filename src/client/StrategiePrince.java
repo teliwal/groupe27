@@ -90,18 +90,28 @@ public class StrategiePrince extends Strategie{
 
 			/*Si Hul*/
 			Integer refRmiVoisin = 0;
-			boolean trouve = false;	
-			Iterator<Integer> it = voisins.keySet().iterator();
+			boolean trouve = false;
+			Element elem = null;
+			/*Iterator<Integer> it = voisins.keySet().iterator();
 			Element elem = null;
 			while (!trouve && it.hasNext()) {
 				refRmiVoisin = it.next();
 				elem = arene.elementFromRef(refRmiVoisin);
 				trouve = elem instanceof PersonnageHulk ; 
+				console.setPhrase("Je cherche le Hulk");
+			}*/
+			int refHulk=0;
+			for(int refVoisin : voisins.keySet()) {
+				if(arene.elementFromRef(refVoisin) instanceof PersonnageHulk){
+					elemPlusProche = arene.elementFromRef(refVoisin);
+					refHulk = refVoisin;
+					trouve = true;
+				}
 			}
 			Point myPos = position;
 			if(trouve && voisins.size() > 1){
 				console.setPhrase("J evite Hulk");
-				Point posHulk = voisins.get(refRmiVoisin);
+				Point posHulk = arene.getPosition(refHulk);  //voisins.get(refRmiVoisin);
 				
 				eviteUnElement(arene, refRMI, myPos, posHulk );
 			}else{
@@ -138,8 +148,19 @@ public class StrategiePrince extends Strategie{
 						
 						int minForce = 100;
 						int minVie = 100;
-						
-						it = voisins.keySet().iterator();
+						int refFailee = 0;
+						for(int refVoisin : voisins.keySet()) {
+							elem = arene.elementFromRef(refVoisin);
+							refRmiVoisin = refVoisin;
+							int elemVie = elem.getCaract(Caracteristique.VIE);
+							int elemForce = elem.getCaract(Caracteristique.FORCE);
+							if((elemVie <= minVie || elemForce <= minForce) && (elemVie+elemForce <= minVie+minForce)){
+								minVie = elemVie;
+								minForce = elemForce;
+								refFailee = refRmiVoisin;
+							}
+						}
+						/*it = voisins.keySet().iterator();
 						int refFailee = 0;
 						while (it.hasNext()) {
 							refRmiVoisin = it.next();
@@ -151,9 +172,9 @@ public class StrategiePrince extends Strategie{
 								minForce = elemForce;
 								refFailee = refRmiVoisin;
 							}
-						}
+						}*/
 						refCible = refFailee;
-						if((voisins.size() <= 1 || myForce > minForce) && myLive > 10){
+						if((voisins.size() <= 1 || myForce > minForce)/*  && myLive > 10*/){
 							console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
 							arene.lanceAttaque(refRMI, refCible);
 						}
