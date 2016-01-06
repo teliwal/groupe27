@@ -76,11 +76,11 @@ public class Constantes {
 	/**
 	 * diminution de la force
 	 */
-	public static final int DIM_FORCE = 1;
+	public static final int DIM_FORCE = -1;
 	/**
 	 * diminution de la vie
 	 */
-	public static final int DIM_VIE = 1;
+	public static final int DIM_VIE = -1;
 	
 	/**
 	 *Augmente l'initiative 

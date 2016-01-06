@@ -3,7 +3,6 @@ package serveur.element;
 import java.util.HashMap;
 
 import utilitaires.Calculs;
-import utilitaires.Constantes;
 
 public class Mixte extends Potion{
 

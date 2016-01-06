@@ -203,8 +203,7 @@ public interface IArene extends Remote {
 	
 	
 	public boolean donnerVie(int refRMI,int refCible) throws RemoteException;
-	
-
+	public boolean seTeleporter(int refRMI , int refCible) throws RemoteException;
 	/**************************************************************************
 	 * Specifique au tournoi.
 	 **************************************************************************/

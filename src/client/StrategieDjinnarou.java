@@ -78,8 +78,16 @@ public class StrategieDjinnarou extends Strategie {
 						
 					} else { // si voisins, mais plus eloignes
 						// je vais vers le plus proche
-						console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
-						arene.deplace(refRMI, refCible);
+						if(elemPlusProche instanceof Potion)
+						{
+							console.setPhrase("Je me teleporte vers " + elemPlusProche.getNom());
+							arene.seTeleporter(refRMI, refCible);
+						}
+						else
+						{
+							console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
+							arene.deplace(refRMI, refCible);
+						}
 					}
 				}
 	  }
