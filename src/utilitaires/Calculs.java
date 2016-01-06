@@ -69,7 +69,7 @@ public class Calculs {
 	 * @return meilleur point libre a une distance de 1 dans la direction de la 
 	 * cible, ou null s'il n'en existe aucun
 	 */
-	public static Point meilleurPoint(Point origine, Point objectif, 
+	public static Point meilleurPoint(int step, Point origine, Point objectif, 
 			HashMap<Integer, Point> voisins) {
 		
 		// liste contenant tous les positions vers lesquelles l'element peut avancer :
@@ -77,9 +77,9 @@ public class Calculs {
 		ArrayList<Point> listePossibles = new ArrayList<Point>();		
 		
 		Point tempPoint;
-		
-		for (int i = -1; i <= 1; i++) {
-			for (int j = -1; j <= 1; j++) {
+		//int step = c.getInit();
+		for (int i = -step; i <= step; i++) {
+			for (int j = -step; j <= step; j++) {
 				if ((i != 0) || (j != 0))  { // pas le point lui-meme
 					tempPoint = new Point(origine.x + i, origine.y + j);
 					
