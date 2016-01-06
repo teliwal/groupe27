@@ -10,8 +10,10 @@ import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Magique;
+import serveur.element.Malin;
 import serveur.element.PersonnageDjinnarou;
 import serveur.element.Potion;
+import serveur.element.TesterPotion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -69,11 +71,12 @@ public class StrategieDjinnarou extends Strategie {
 						// j'interagis directement
 						if(elemPlusProche instanceof Potion) { // potion
 							// ramassage
-							if(elemPlusProche instanceof Magique){
+							TesterPotion teste = new TesterPotion();
+							if(teste.forceAvantageuse((Potion) elemPlusProche)){
 								console.setPhrase("Je ramasse une potion");
 								arene.ramassePotion(refRMI, refCible);
 							}else{
-								console.setPhrase("Je ramasse une potion");
+								console.setPhrase("Je garde une potion");
 								arene.garderPotion(refRMI, refCible);
 							}
 
@@ -93,15 +96,26 @@ public class StrategieDjinnarou extends Strategie {
 						}
 						else
 						{
-							console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
-							arene.deplace(refRMI, refCible);
+							Malin el = (Malin) arene.elementFromRef(refRMI);
+							if(!el.getList().isEmpty()){
+								console.setPhrase("Je depose une potion vers mon voisin " + elemPlusProche.getNom());
+								deposerPotion(arene, arene.getPosition(refCible),el.getPotion(0));
+							}else{
+								console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
+								arene.deplace(refRMI, refCible);
+							}
 						}
 					}
 				}
 	  }
 	
-	public void deposerPotion(int ref){
-		
+	public void deposerPotion(IArene arene, Point position,Potion p){
+		try {
+			arene.ajoutePotion(p, position);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -19,7 +19,9 @@ public   class Malin extends Personnage {
 	public Potion getPotion(int i){
 		return lstPotion.get(i);
 	}
-	
+	public List<Potion> getList(){
+		return lstPotion;
+	}
 	/**
 	 * 
 	 */
