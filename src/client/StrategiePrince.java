@@ -98,13 +98,12 @@ public class StrategiePrince extends Strategie{
 				elem = arene.elementFromRef(refRmiVoisin);
 				trouve = elem instanceof PersonnageHulk ; 
 			}
-
+			Point myPos = position;
 			if(trouve && voisins.size() > 1){
 				console.setPhrase("J evite Hulk");
 				Point posHulk = voisins.get(refRmiVoisin);
-				Point myPos = position;
-				Point dir = new Point(myPos.x-posHulk.x,myPos.y-posHulk.y);
-				arene.deplace(refRMI, new Point(myPos.x+2*dir.x,myPos.y+2*dir.y));
+				
+				eviteUnElement(arene, refRMI, myPos, posHulk );
 			}else{
 				
 				//if(voisins.size() > 1 && voisins.)
@@ -123,6 +122,7 @@ public class StrategiePrince extends Strategie{
 						//si Poison -> evite
 						if(elemPlusProche instanceof Poison){
 							console.setPhrase("Je evite le Poison");
+							eviteUnElement(arene, refRMI, myPos, arene.getPosition(refCible));
 						}else{
 							//sinon ramassage
 							console.setPhrase("Je ramasse une potion");
@@ -165,6 +165,15 @@ public class StrategiePrince extends Strategie{
 					arene.deplace(refRMI, refCible);
 				}
 			}
+		}
+	}
+	
+	public void eviteUnElement(IArene arene, int refRMI, Point myPos, Point posElem ){
+		Point dir = new Point(myPos.x-posElem.x,myPos.y-posElem.y);
+		try {
+			arene.deplace(refRMI, new Point(myPos.x+2*dir.x,myPos.y+2*dir.y));
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 	}
 }

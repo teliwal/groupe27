@@ -2,8 +2,6 @@ package serveur.element;
 
 import java.util.HashMap;
 
-import utilitaires.Constantes;
-
 public class PersonnagePrince extends Personnage{
 
 	/**
