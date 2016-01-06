@@ -1,14 +1,22 @@
 package serveur.element;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class PersonnagePrince extends Malin{
+import utilitaires.Constantes;
+
+public class PersonnagePrince extends Personnage{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public PersonnagePrince(String nom,
 			HashMap<Caracteristique, Integer> caracts) {
 		super(nom, "Prince", caracts);
-		// TODO Auto-generated constructor stub
+		this.caracts.put(Caracteristique.VUE, Caracteristique.VUE.getMax());
+		this.caracts.put(Caracteristique.VITESSE, Caracteristique.VITESSE.getMax());
 	}
-	
+
 }
+

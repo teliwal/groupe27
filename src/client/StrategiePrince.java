@@ -38,6 +38,7 @@ public class StrategiePrince extends Strategie{
 		logger.info("Lanceur", "Creation de la console...");
 
 		try {
+			caracts.put(Caracteristique.VUE, Caracteristique.VUE.getMax());
 			console = new Console(ipArene, port, ipConsole, this, 
 					new PersonnagePrince(nom, caracts), 
 					nbTours, position, logger);
@@ -75,6 +76,8 @@ public class StrategiePrince extends Strategie{
 			e.printStackTrace();
 		}
 
+		
+		
 		if (voisins.isEmpty()) { // je n'ai pas de voisins, j'erre
 			console.setPhrase("J'erre...");
 			arene.deplace(refRMI, 0); 
@@ -103,13 +106,18 @@ public class StrategiePrince extends Strategie{
 				Point dir = new Point(myPos.x-posHulk.x,myPos.y-posHulk.y);
 				arene.deplace(refRMI, new Point(myPos.x+2*dir.x,myPos.y+2*dir.y));
 			}else{
-
+				
 				//if(voisins.size() > 1 && voisins.)
 
 
-				int testDistance = arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
+				int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
+				if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
+					testDistance = 1;
+				}else{
+					testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
+				}
 				//diminution de la zone d'attaque
-				if(distPlusProche <= testDistance) { 
+				if(distPlusProche <= testDistance) { // si suffisamment proches
 					// j'interagis directement
 					if(elemPlusProche instanceof Potion) { // potion
 						//si Poison -> evite
@@ -122,8 +130,33 @@ public class StrategiePrince extends Strategie{
 						}
 					} else { // personnage
 						// duel
-						console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
-						arene.lanceAttaque(refRMI, refCible);
+						Element me = arene.elementFromRef(refRMI);
+						int myForce = me.getCaract(Caracteristique.FORCE);
+						int myLive = me.getCaract(Caracteristique.VIE);
+						
+						/*parcourir les voisins pour choisir le plus faible*/
+						
+						int minForce = 100;
+						int minVie = 100;
+						
+						it = voisins.keySet().iterator();
+						int refFailee = 0;
+						while (it.hasNext()) {
+							refRmiVoisin = it.next();
+							elem = arene.elementFromRef(refRmiVoisin);
+							int elemVie = elem.getCaract(Caracteristique.VIE);
+							int elemForce = elem.getCaract(Caracteristique.FORCE);
+							if((elemVie <= minVie || elemForce <= minForce) && (elemVie+elemForce <= minVie+minForce)){
+								minVie = elemVie;
+								minForce = elemForce;
+								refFailee = refRmiVoisin;
+							}
+						}
+						refCible = refFailee;
+						if((voisins.size() <= 1 || myForce > minForce) && myLive > 10){
+							console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
+							arene.lanceAttaque(refRMI, refCible);
+						}
 					}
 
 				} else { // si voisins, mais plus eloignes
@@ -134,6 +167,5 @@ public class StrategiePrince extends Strategie{
 			}
 		}
 	}
-
-
 }
+
