@@ -75,8 +75,8 @@ public class LancePersonnage {
 			// caracteristiques du personnage
 			HashMap<Caracteristique, Integer> caracts = new HashMap<Caracteristique, Integer>();
 			// seule la force n'a pas sa valeur par defaut (exemple)
-			caracts.put(Caracteristique.FORCE, 
-					Calculs.valeurCaracAleatoire(Caracteristique.FORCE)); 
+			//caracts.put(Caracteristique.FORCE, 
+			//		Calculs.valeurCaracAleatoire(Caracteristique.FORCE)); 
 			
 			Point position = Calculs.positionAleatoireArene();
 			
@@ -92,8 +92,8 @@ public class LancePersonnage {
 			logger.info("Lanceur", "Creation du Zombie reussie");
 			position = Calculs.positionAleatoireArene();
 			nom = "hulk";
-			//new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
-			//logger.info("Lanceur", "Creation du Hulk reussie");
+			new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du Hulk reussie");
 			
 			
 			

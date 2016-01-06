@@ -312,7 +312,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		
 		for (Caracteristique c : caracts.keySet()) {
 			valeurTemp = caracts.get(c);
-			
+					
 			if (valeurTemp < c.getMin() || valeurTemp > c.getMax()) {
 				res = false;
 			}
@@ -779,7 +779,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				
 				// on teste que les deux personnages soient en vie
 				if (pers.estVivant() && persAdv.estVivant()) {
-					if(pers.getCaract(Caracteristique.INITIATIVE)>persAdv.getCaract(Caracteristique.INITIATIVE)){
+					
 						console.log(Level.INFO, Constantes.nomClasse(this), 
 								"J'attaque " + nomRaccourciClient(refRMIAdv));
 						consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
@@ -790,18 +790,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 						
 						new Duel(this, client, clientAdv).interagit();
 						personnages.get(refRMI).executeAction();
-					}else{
-						consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
-								"J'attaque " + nomRaccourciClient(refRMIAdv));
-						console.log(Level.INFO, Constantes.nomClasse(this), 
-								"Je me fait attaquer par " + nomRaccourciClient(refRMI));
-						
-						logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-								" attaque " + nomRaccourciClient(console.getRefRMI()));
-						
-						new Duel(this, clientAdv, client).interagit();
-						personnages.get(refRMI).executeAction();
-					}
+					
 					console.log(Level.INFO, Constantes.nomClasse(this), 
 							"J'attaque " + nomRaccourciClient(refRMIAdv));
 					consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 

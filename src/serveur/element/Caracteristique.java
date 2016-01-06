@@ -16,7 +16,7 @@ public enum Caracteristique {
 	/**
 	 * Force : indique les degats infliges. 
 	 */
-	FORCE("Force", "FOR", 0, 100, 1),
+	FORCE("Force", "FOR", 0, 100, 30),
 		
 	/**
 	 * Initiative : definit l'ordre d'action des personnages lors d'un tour de jeu. 
@@ -31,7 +31,7 @@ public enum Caracteristique {
 	/**
 	 * Vitesse : nombre de points de vitesse
 	 */
-	VITESSE("Vitesse","VITESSE",1,5,10);
+	VITESSE("Vitesse","VITESSE",1,10,5);
 	/**
 	 * Nom complet.
 	 */
