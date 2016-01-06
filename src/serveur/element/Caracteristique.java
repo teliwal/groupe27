@@ -35,7 +35,7 @@ public enum Caracteristique {
 	/**
 	 * Vitesse : nombre de points de vitesse
 	 */
-	VITESSE("Vitesse","VITESSE",1,10,5),
+	VITESSE("Vitesse","VITESSE",1,10,2),
 	/**
 	 * 
 	 */
