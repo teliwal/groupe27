@@ -31,7 +31,7 @@ public enum Caracteristique {
 	/**
 	 * ZoneAttack : nombre de points de la zone d'attaque
 	 */
-	ZONEATTACK ("ZoneAttack", "ZONEATTACK", 0, 5, 3),
+	ZONEATTACK ("ZoneAttack", "ZONEATTACK", 1, 5, 3),
 	/**
 	 * Vitesse : nombre de points de vitesse
 	 */

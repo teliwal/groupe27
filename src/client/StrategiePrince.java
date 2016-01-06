@@ -107,14 +107,9 @@ public class StrategiePrince extends Strategie{
 				//if(voisins.size() > 1 && voisins.)
 
 
-				int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
-				if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
-					testDistance = 1;
-				}else{
-					testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
-				}
+				int testDistance = arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
 				//diminution de la zone d'attaque
-				if(distPlusProche <= testDistance) { // si suffisamment proches
+				if(distPlusProche <= testDistance) { 
 					// j'interagis directement
 					if(elemPlusProche instanceof Potion) { // potion
 						//si Poison -> evite

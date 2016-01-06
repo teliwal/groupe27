@@ -68,14 +68,9 @@ public class StrategieJedi extends Strategie {
 				int refCible = Calculs.chercheElementProche(arene,refRMI,position, voisins);
 				int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 				Element elemPlusProche = arene.elementFromRef(refCible);
-				int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
-				if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
-					testDistance = 1;
-				}else{
-					testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
-				}
+				int testDistance = arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
 				//diminution de la zone d'attaque
-				if(distPlusProche <= testDistance) { // si suffisamment proches
+				if(distPlusProche <= testDistance) { 
 					if(elemPlusProche instanceof PersonnageHulk || elemPlusProche instanceof PersonnageZombie) { 
 						// duel
 						console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());

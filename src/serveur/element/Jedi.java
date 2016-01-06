@@ -5,6 +5,7 @@ import utilitaires.Calculs;
 public class Jedi extends Personnage{
 
 	private static int num=1;
+	
 	public Jedi(String groupe) {
 		super("Jedi_"+num++, groupe);
 		this.caracts.put(Caracteristique.DON, 70);

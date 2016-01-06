@@ -1,14 +1,16 @@
 package serveur.element;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Un element du jeu (potion ou personnage). 
  *
  */
 public abstract class Element implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	/**
