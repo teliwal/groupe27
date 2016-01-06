@@ -164,6 +164,18 @@ public interface IArene extends Remote {
 	public boolean ramassePotion(int refRMI, int refPotion) throws RemoteException;
 	
 	/**
+	 * Execute le garder d'une potion par un personnage, si possible.
+	 * Le garder echoue si une action a deja ete executee ce tour par ce 
+	 * personnage, ou si la potion est trop loin du personnage.
+	 * @param refRMI reference RMI du personnage voulant garder une potion
+	 * @param refPotion reference RMI de la potion qui doit etre garde
+	 * @return vrai si l'action a ete effectuee, faux sinon
+	 * @throws RemoteException
+	 */
+	
+	public boolean garderPotion(int refRMI, int refPotion) throws RemoteException;
+	
+	/**
 	 * Execute un duel entre le personnage correspondant a la console donnee 
 	 * et l'adversaire correspondant a la reference RMI donnee.
 	 * Le duel echoue si une action a deja ete executee a ce tour par 

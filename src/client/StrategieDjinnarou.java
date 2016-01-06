@@ -9,6 +9,7 @@ import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
+import serveur.element.Magique;
 import serveur.element.PersonnageDjinnarou;
 import serveur.element.Potion;
 import utilitaires.Calculs;
@@ -68,12 +69,12 @@ public class StrategieDjinnarou extends Strategie {
 						// j'interagis directement
 						if(elemPlusProche instanceof Potion) { // potion
 							// ramassage
-							if(){
+							if(elemPlusProche instanceof Magique){
 								console.setPhrase("Je ramasse une potion");
 								arene.ramassePotion(refRMI, refCible);
-							else{
+							}else{
 								console.setPhrase("Je ramasse une potion");
-								arene.ramassePotion(refRMI, refCible);
+								arene.garderPotion(refRMI, refCible);
 							}
 
 						} else { // personnage
@@ -98,5 +99,9 @@ public class StrategieDjinnarou extends Strategie {
 					}
 				}
 	  }
+	
+	public void deposerPotion(int ref){
+		
+	}
 
 }
