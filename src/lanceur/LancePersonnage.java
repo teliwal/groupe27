@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.HashMap;
 
-import client.StrategieHulk;
-import client.StrategiePersonnage;
-import client.StrategiePrince;
-import client.StrategieZombie;
+import client.StrategieDjinnarou;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import utilitaires.Calculs;
@@ -80,9 +77,9 @@ public class LancePersonnage {
 			
 			Point position = Calculs.positionAleatoireArene();
 			
-			//new StrategiePersonnage(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
-			//logger.info("Lanceur", "Creation du personnage reussie");
-			position = Calculs.positionAleatoireArene();
+			new StrategieDjinnarou(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			logger.info("Lanceur", "Creation du djinnarou reussie");
+			/*position = Calculs.positionAleatoireArene();
 			nom = "Zombie";
 			new StrategieZombie(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Zombie reussie");
@@ -93,7 +90,7 @@ public class LancePersonnage {
 			position = Calculs.positionAleatoireArene();
 			nom = "hulk";
 			//new StrategieHulk(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
-			//logger.info("Lanceur", "Creation du Hulk reussie");
+			//logger.info("Lanceur", "Creation du Hulk reussie");*/
 			
 			
 			

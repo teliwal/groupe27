@@ -799,18 +799,6 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 							
 							new Duel(this, client, clientAdv).interagit();
 							personnages.get(refRMI).executeAction();
-						
-						console.log(Level.INFO, Constantes.nomClasse(this), 
-								"J'attaque " + nomRaccourciClient(refRMIAdv));
-						consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
-								"Je me fait attaquer par " + nomRaccourciClient(refRMI));
-						
-						logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-								" attaque " + nomRaccourciClient(consoleAdv.getRefRMI()));
-						
-						new Duel(this, client, clientAdv).interagit();
-						personnages.get(refRMI).executeAction();
-						
 						// si l'adversaire est mort
 						if (!persAdv.estVivant()) {
 							if(pers instanceof PersonnageZombie && persAdv instanceof PersonnagePrince){
@@ -946,11 +934,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		} else {
 			// sinon, on tente de jouer l'interaction
 			new Deplacement(client, getVoisins(refRMI)).seTeleporter(refCible);
-			client.executeAction();
-			
+			client.executeAction();			
 			res = true;
 		}
-		
 		return res;
 	}
 	/**

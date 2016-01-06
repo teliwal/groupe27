@@ -94,7 +94,8 @@ public class Deplacement {
 	public void seTeleporter(int refObjectif) throws RemoteException {
 		Point p1=voisins.get(refObjectif);
 		Point cible=Calculs.restreintPositionArene(p1);
-		Point dest = Calculs.meilleurPoint(1, cible, personnage.getPosition(), voisins);
+		int distance=Calculs.distanceChebyshev(personnage.getPosition(),cible);
+		Point dest = Calculs.meilleurPoint(distance-1, personnage.getPosition(),cible,voisins);
 		if(dest !=null)
 		{
 			personnage.setPosition(dest);

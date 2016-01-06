@@ -63,7 +63,7 @@ public class StrategieDjinnarou extends Strategie {
 					Element elemPlusProche = arene.elementFromRef(refCible);
 
 					//diminution de la zone d'attaque
-					if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION - arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)) { // si suffisamment proches
+					if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION ) { 
 						// j'interagis directement
 						if(elemPlusProche instanceof Potion) { // potion
 							// ramassage
@@ -82,6 +82,7 @@ public class StrategieDjinnarou extends Strategie {
 						{
 							console.setPhrase("Je me teleporte vers " + elemPlusProche.getNom());
 							arene.seTeleporter(refRMI, refCible);
+							//arene.deplace(refRMI, refCible);
 						}
 						else
 						{
