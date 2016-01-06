@@ -4,16 +4,16 @@ import java.awt.Point;
 import java.rmi.RemoteException;
 import java.util.*;
 
-
-
 import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
+import serveur.element.Malin;
 import serveur.element.PersonnageHulk;
 import serveur.element.PersonnagePrince;
 import serveur.element.Poison;
 import serveur.element.Potion;
+import serveur.element.TesterPotion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 import client.controle.Console;
@@ -109,12 +109,7 @@ public class StrategiePrince extends Strategie{
 				//if(voisins.size() > 1 && voisins.)
 
 
-				int testDistance = Constantes.DISTANCE_MIN_INTERACTION;
-				if(testDistance <= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK)){
-					testDistance = 1;
-				}else{
-					testDistance -= arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
-				}
+				int testDistance = arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
 				//diminution de la zone d'attaque
 				if(distPlusProche <= testDistance) { // si suffisamment proches
 					// j'interagis directement
@@ -122,11 +117,16 @@ public class StrategiePrince extends Strategie{
 						//si Poison -> evite
 						if(elemPlusProche instanceof Poison){
 							console.setPhrase("Je evite le Poison");
-							eviteUnElement(arene, refRMI, myPos, arene.getPosition(refCible));
 						}else{
-							//sinon ramassage
-							console.setPhrase("Je ramasse une potion");
-							arene.ramassePotion(refRMI, refCible);
+							TesterPotion teste = new TesterPotion();
+							//Si potion est avantageuse je la prend
+							if(teste.potionAvantageuse((Potion) elemPlusProche)){
+								console.setPhrase("Je ramasse une potion");
+								arene.ramassePotion(refRMI, refCible);
+							}else if(teste.estPoison((Potion) elemPlusProche)){//si c'est poison, je la garde
+								console.setPhrase("Je garde une potion");
+								arene.garderPotion(refRMI, refCible);
+							}
 						}
 					} else { // personnage
 						// duel
@@ -160,9 +160,20 @@ public class StrategiePrince extends Strategie{
 					}
 
 				} else { // si voisins, mais plus eloignes
-					// je vais vers le plus proche
-					console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
-					arene.deplace(refRMI, refCible);
+					Malin el = (Malin) arene.elementFromRef(refRMI);
+					if(!el.getList().isEmpty()){
+						for(int i = 0;i < el.getList().size();i++){
+							if(el.getPotion(i) != null){
+								deposerPotion(arene, arene.getPosition(refCible),el.getPotion(i));
+								i = el.getList().size();
+							}
+						}
+						console.setPhrase("Je depose une potion vers mon voisin " + elemPlusProche.getNom());
+						
+					}else{
+						console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
+						arene.deplace(refRMI, refCible);
+					}
 				}
 			}
 		}
@@ -173,6 +184,14 @@ public class StrategiePrince extends Strategie{
 		try {
 			arene.deplace(refRMI, new Point(myPos.x+2*dir.x,myPos.y+2*dir.y));
 		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	public void deposerPotion(IArene arene, Point position,Potion p){
+		try {
+			arene.ajoutePotion(p, position);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
