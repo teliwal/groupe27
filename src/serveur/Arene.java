@@ -21,6 +21,8 @@ import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.PersonnageFou;
+import serveur.element.PersonnagePrince;
+import serveur.element.PersonnageZombie;
 import serveur.element.Potion;
 import serveur.interaction.Deplacement;
 import serveur.interaction.Donner;
@@ -786,7 +788,18 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				
 				// on teste que les deux personnages soient en vie
 				if (pers.estVivant() && persAdv.estVivant()) {
-					
+					if(client.getElement().getCaract(Caracteristique.INITIATIVE) >= clientAdv.getElement().getCaract(Caracteristique.INITIATIVE)){
+							console.log(Level.INFO, Constantes.nomClasse(this), 
+									"J'attaque " + nomRaccourciClient(refRMIAdv));
+							consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
+									"Je me fait attaquer par " + nomRaccourciClient(refRMI));
+							
+							logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
+									" attaque " + nomRaccourciClient(consoleAdv.getRefRMI()));
+							
+							new Duel(this, client, clientAdv).interagit();
+							personnages.get(refRMI).executeAction();
+						
 						console.log(Level.INFO, Constantes.nomClasse(this), 
 								"J'attaque " + nomRaccourciClient(refRMIAdv));
 						consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
@@ -797,29 +810,23 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 						
 						new Duel(this, client, clientAdv).interagit();
 						personnages.get(refRMI).executeAction();
-					
-					console.log(Level.INFO, Constantes.nomClasse(this), 
-							"J'attaque " + nomRaccourciClient(refRMIAdv));
-					consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
-							"Je me fait attaquer par " + nomRaccourciClient(refRMI));
-					
-					logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-							" attaque " + nomRaccourciClient(consoleAdv.getRefRMI()));
-					
-					new Duel(this, client, clientAdv).interagit();
-					personnages.get(refRMI).executeAction();
-					
-					// si l'adversaire est mort
-					if (!persAdv.estVivant()) {
-						setPhrase(refRMI, "Je tue " + nomRaccourciClient(consoleAdv.getRefRMI()));
-						console.log(Level.INFO, Constantes.nomClasse(this), 
-								"Je tue " + nomRaccourciClient(refRMI));
 						
-						logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-								" tue " + nomRaccourciClient(consoleAdv.getRefRMI()));
+						// si l'adversaire est mort
+						if (!persAdv.estVivant()) {
+							if(pers instanceof PersonnageZombie && persAdv instanceof PersonnagePrince){
+								((PersonnageZombie) pers).tuerPrince();
+							}
+							setPhrase(refRMI, "Je tue " + nomRaccourciClient(consoleAdv.getRefRMI()));
+							console.log(Level.INFO, Constantes.nomClasse(this), 
+									"Je tue " + nomRaccourciClient(refRMI));
+							
+							logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
+									" tue " + nomRaccourciClient(consoleAdv.getRefRMI()));
+						}
+						
+						res = true;
 					}
-					
-					res = true;
+						
 				} else {
 					logger.warning(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
 							" a tente d'interagir avec "+nomRaccourciClient(refRMIAdv)+", alors qu'il est mort...");

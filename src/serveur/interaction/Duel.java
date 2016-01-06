@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
+import serveur.element.PersonnagePrince;
+import serveur.element.PersonnageZombie;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
@@ -38,9 +40,6 @@ public class Duel extends Interaction<VuePersonnage> {
 
 			// ejection du defenseur
 			defenseur.setPosition(positionEjection);
-			if(defenseur.getElement().getGroupe().equals("Prince") && attaquant.getElement().getGroupe().equals("Zombie")){
-				defenseur.getElement().tue();
-			}else{
 				// degats
 				if (perteVie > 0) {
 					arene.incrementeCaractElement(defenseur, Caracteristique.VIE, -perteVie);
@@ -52,7 +51,7 @@ public class Duel extends Interaction<VuePersonnage> {
 				// initiative
 				incrementeInitiative(defenseur);
 				decrementeInitiative(attaquant);
-			}
+			
 		} catch (RemoteException e) {
 			logs(Level.INFO, "\nErreur lors d'une attaque : " + e.toString());
 		}
