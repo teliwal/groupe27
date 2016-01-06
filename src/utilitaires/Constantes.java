@@ -39,7 +39,22 @@ public class Constantes {
 	/**
 	 * Taille du champ de vision des Fous
 	 */
-	public static final int  VISION_FOU = 20;
+	public static final int  VISION_FOU = 5;
+	
+	/**
+	 * valeur d'augmentation de la vitesse	
+	 */
+	public static final int AUG_VITESSE = 2;
+	
+	/**
+	 * valeur d'augmentation de la vue
+	 */
+	public static final int AUG_VUE = 3;
+	
+	/**
+	 *Augmente l'initiative 
+	 */
+	public static final int AUG_INITIATIVE = 5;
 	
 	/**
 	  *Distance minimale pour que le personnageFou attaque un autre personnage
@@ -111,11 +126,6 @@ public class Constantes {
 	 * Force de la potion Soigneur
 	 */
 	public static int SOIGN_FORCE = 5;
-	
-	/**
-	 *Augmente l'initiative 
-	 */
-	public static final int AUG_INITIATIVE = 5;
 	
 	/**
 	 * Retourne le nom de la classe de l'objet passe en parametre, sous 

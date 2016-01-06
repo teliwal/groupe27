@@ -1,14 +1,19 @@
 package utilitaires;
 
 import java.awt.Point;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
+
 import static utilitaires.Constantes.*;
 
+import serveur.IArene;
 import serveur.element.Caracteristique;
+import serveur.element.Element;
+import serveur.element.Personnage;
 
 /**
  * Classe regroupant quelques methodes utiles pour l'arene (distance, case vide,
@@ -109,9 +114,14 @@ public class Calculs {
 	 * @param origine position a partir de laquelle on cherche
 	 * @param voisins liste des voisins
 	 * @return reference de l'element le plus proche, 0 si il n'y en a pas
+	 * @throws RemoteException 
 	 */
-	public static int chercheElementProche(Point origine, HashMap<Integer, Point> voisins) {
-		int distPlusProche = VISION;
+	public static int chercheElementProche(IArene arene, int ref,Point origine, HashMap<Integer, Point> voisins) throws RemoteException {
+		//l'element qui cherche le plus proche
+		Element elem = (Personnage) arene.elementFromRef(ref);
+		
+		int distPlusProche = elem.getCaract(Caracteristique.VUE);
+				
 		int refPlusProche = 0;
 		
 		for(int refVoisin : voisins.keySet()) {

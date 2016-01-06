@@ -76,7 +76,7 @@ public class StrategiePrince extends Strategie{
 			arene.deplace(refRMI, 0); 
 			
 		} else {
-			int refCible = Calculs.chercheElementProche(position, voisins);
+			int refCible = Calculs.chercheElementProche(arene,refRMI,position, voisins);
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 
 			Element elemPlusProche = arene.elementFromRef(refCible);

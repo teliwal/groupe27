@@ -604,7 +604,6 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 */
 	private boolean estVoisin(VuePersonnage courant, VueElement<?> voisin) throws RemoteException {
 		int vision;
-		
 		if(courant.getElement() instanceof PersonnageFou) {
 			vision = Constantes.VISION_FOU;
 		} else {
@@ -615,6 +614,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				Calculs.distanceChebyshev(voisin.getPosition(), courant.getPosition()) <= vision;
 		
 		if(voisin instanceof VuePersonnage) { // potion
+			
 			res = res && 
 					((VuePersonnage) voisin).getElement().estVivant() &&
 					voisin.getRefRMI() != courant.getRefRMI();
@@ -711,7 +711,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		
 		VuePersonnage vuePersonnage = personnages.get(refRMI);
 		VuePotion vuePotion = potions.get(refPotion);
-
+		Element pers;
 		
 		if (vuePersonnage.isActionExecutee()) {
 			// si une action a deja ete executee
@@ -732,6 +732,11 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				new Ramassage(this, vuePersonnage, vuePotion).interagit();
 				personnages.get(refRMI).executeAction();
 				
+				//ATTENTION NON FINI
+				pers = elementFromRef(refRMI);
+				if(pers instanceof PersonnageFou) {
+					
+				}
 				res = true;
 			} else {
 				logger.warning(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 

@@ -21,7 +21,10 @@ public class Magique extends Potion{
 	public Magique(String nom, String groupe, HashMap<Caracteristique, Integer> caracts) {
 		super(nom, groupe, caracts);
 		// TODO Auto-generated constructor stub
-		caracts.put(Caracteristique.INITIATIVE,Constantes.AUG_INITIATIVE);
+		this.caracts.put(Caracteristique.INITIATIVE,Constantes.AUG_INITIATIVE);
+		this.caracts.put(Caracteristique.VUE, Constantes.AUG_VUE);
+		this.caracts.put(Caracteristique.VITESSE, Constantes.AUG_VITESSE);
+		
 	}
 
 }
