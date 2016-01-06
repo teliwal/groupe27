@@ -57,6 +57,27 @@ public class Constantes {
 	public static final int AUG_ZONE = 1;
 	
 	/**
+	 * diminution de la zone d'attaque
+	 */
+	public static final int DIM_ZONE = -1;
+	/**
+	 * diminution de la vue
+	 */
+	public static final int DIM_VUE = -3;
+	/**
+	 *diminue l'initiative 
+	 */
+	public static final int DIM_INITIATIVE = -5;
+	/**
+	 * diminution de la force
+	 */
+	public static final int DIM_FORCE = 1;
+	/**
+	 * diminution de la vie
+	 */
+	public static final int DIM_VIE = 1;
+	
+	/**
 	 *Augmente l'initiative 
 	 */
 	public static final int AUG_INITIATIVE = 5;
