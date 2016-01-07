@@ -805,7 +805,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				
 				// on teste que les deux personnages soient en vie
 				if (pers.estVivant() && persAdv.estVivant()) {
-					if(client.getElement().getCaract(Caracteristique.INITIATIVE) >= clientAdv.getElement().getCaract(Caracteristique.INITIATIVE)){
+					//if(client.getElement().getCaract(Caracteristique.INITIATIVE) >= clientAdv.getElement().getCaract(Caracteristique.INITIATIVE)){
 							console.log(Level.INFO, Constantes.nomClasse(this), 
 									"J'attaque " + nomRaccourciClient(refRMIAdv));
 							consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
@@ -830,7 +830,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 						}
 						
 						res = true;
-					}
+					//}
 						
 				} else {
 					logger.warning(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 

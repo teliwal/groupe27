@@ -177,6 +177,9 @@ public class StrategiePrince extends Strategie{
 						if((voisins.size() <= 1 || myForce > minForce)/*  && myLive > 10*/){
 							console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
 							arene.lanceAttaque(refRMI, refCible);
+						}else{
+							console.setPhrase("Mon voisin est plus fort que moi. J'erre...");
+							arene.deplace(refRMI, 0); 
 						}
 					}
 
