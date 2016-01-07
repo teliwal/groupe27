@@ -8,7 +8,9 @@ import java.util.logging.Level;
 import utilitaires.Constantes;
 
 public   class Malin extends Personnage {
-	protected Potion gardePotion;
+	protected Potion gardePotion ;
+	public boolean estLance = false;
+	
 	public Malin(String nom, String groupe,
 			HashMap<Caracteristique, Integer> caracts) {
 		super(nom, groupe, caracts);
@@ -17,8 +19,16 @@ public   class Malin extends Personnage {
 
 	public void addPotion(Potion p){
 		gardePotion = p;
+		estLance = false;
 	}
-
+	
+	public void potionLance(){
+		 estLance = true;
+	}
+	
+	public boolean possedePotion(){
+		return !estLance;
+	}
 	public Potion getPotion(){
 		return gardePotion;
 	}

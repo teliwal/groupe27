@@ -11,6 +11,7 @@ import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Malin;
+import serveur.element.Personnage;
 import serveur.element.PersonnageBasique;
 import serveur.element.PersonnageHulk;
 import serveur.element.PersonnagePrince;
@@ -123,8 +124,14 @@ public class StrategiePrince extends Strategie{
 									console.setPhrase("Je ramasse une potion");
 									arene.ramassePotion(refRMI, refCible);
 								}else if(teste.estPoison((Potion) elemPlusProche)){//si c'est poison, je la garde
-									console.setPhrase("Je garde une potion");
-									arene.garderPotion(refRMI, refCible);
+									Malin el = (Malin) arene.elementFromRef(refRMI);
+									if(el.getPotion() == null){
+										console.setPhrase("Je garde une potion");
+										arene.garderPotion(refRMI, refCible);
+									}else{
+										console.setPhrase("J'evite le poison");
+										eviteUnElement(arene, refRMI, myPos, arene.getPosition(refCible) );
+									}
 								}
 							
 	
@@ -135,10 +142,14 @@ public class StrategiePrince extends Strategie{
 						}
 	
 					} else { // si voisins, mais plus eloignes
-						Malin el = (Malin) arene.elementFromRef(refRMI);
-						if(el.getPotion() != null){
-							deposerPotion(arene, arene.getPosition(refCible),el.getPotion());
-							console.setPhrase("Je depose une potion vers mon voisin " + elemPlusProche.getNom());
+						PersonnagePrince el = (PersonnagePrince) arene.elementFromRef(refRMI);
+						if(arene.elementFromRef(refCible) instanceof Personnage){
+							if(el.possedePotion()){
+								//deposerPotion(arene, arene.getPosition(refCible),el.getPotion());
+								el.potionLance();
+								console.setPhrase("Je depose une potion vers mon voisin " + elemPlusProche.getNom());
+								console.setPhrase("potionLance = " + el.possedePotion());
+							}
 						}else{
 							console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
 							arene.deplace(refRMI, refCible);
@@ -160,6 +171,7 @@ public class StrategiePrince extends Strategie{
 		public void deposerPotion(IArene arene, Point position,Potion p){
 			try {
 				arene.ajoutePotion(p, position);
+				
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
