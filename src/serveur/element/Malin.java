@@ -3,9 +3,12 @@ package serveur.element;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+
+import utilitaires.Constantes;
 
 public   class Malin extends Personnage {
-	protected List<Potion> lstPotion = new ArrayList<Potion>();
+	protected Potion gardePotion;
 	public Malin(String nom, String groupe,
 			HashMap<Caracteristique, Integer> caracts) {
 		super(nom, groupe, caracts);
@@ -13,14 +16,11 @@ public   class Malin extends Personnage {
 	}
 
 	public void addPotion(Potion p){
-		lstPotion.add(p);
+		gardePotion = p;
 	}
 
-	public Potion getPotion(int i){
-		return lstPotion.get(i);
-	}
-	public List<Potion> getList(){
-		return lstPotion;
+	public Potion getPotion(){
+		return gardePotion;
 	}
 	/**
 	 * 

@@ -98,15 +98,9 @@ public class StrategieDjinnarou extends Strategie {
 						else
 						{
 							Malin el = (Malin) arene.elementFromRef(refRMI);
-							if(!el.getList().isEmpty()){
-								for(int i = 0;i < el.getList().size();i++){
-									if(el.getPotion(i) != null){
-										deposerPotion(arene, arene.getPosition(refCible),el.getPotion(i));
-										i = el.getList().size();
-									}
-								}
+							if(el.getPotion() != null){
+								deposerPotion(arene, arene.getPosition(refCible),el.getPotion());
 								console.setPhrase("Je depose une potion vers mon voisin " + elemPlusProche.getNom());
-								
 							}else{
 								console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
 								arene.deplace(refRMI, refCible);

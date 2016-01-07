@@ -49,5 +49,7 @@ public interface IAreneIHM extends IArene {
 	 * @throws RemoteException
 	 */
 	public VuePersonnage getGagnant() throws RemoteException;
+	
+	
 
 }

@@ -2,7 +2,7 @@ package serveur.element;
 
 import java.util.HashMap;
 
-public class PersonnagePrince extends Personnage{
+public class PersonnagePrince extends Malin{
 
 	/**
 	 * 

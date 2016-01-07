@@ -21,7 +21,7 @@ public class LancerPersonnageFou {
 	private static String usage = "USAGE : java " + LancePersonnage.class.getName() + " [ port [ ipArene ] ]";
 
 	public static void main(String[] args) {
-		String nom = "Fou";
+		String nom = "Prince";
 		
 		// TODO remplacer la ligne suivante par votre numero de groupe
 		String groupe = "G" + 27; 

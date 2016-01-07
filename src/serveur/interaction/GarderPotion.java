@@ -7,6 +7,9 @@ import java.util.logging.Level;
 import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Malin;
+import serveur.element.Personnage;
+import serveur.element.PersonnageDjinnarou;
+import serveur.element.PersonnagePrince;
 import serveur.element.Potion;
 import serveur.vuelement.VuePersonnage;
 import serveur.vuelement.VuePotion;
@@ -31,12 +34,21 @@ public class GarderPotion extends Interaction<VuePotion> {
 		
 		// si le personnage est vivant
 		if(attaquant.getElement().estVivant()) {
-			Potion valeursPotion = defenseur.getElement();
-			
+			logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " est vivant ");
+			Potion valeursPotion = (Potion) defenseur.getElement();
+			logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " cast potion ");
+			/*if(attaquant.getElement() instanceof PersonnagePrince){
+				PersonnagePrince m = (PersonnagePrince) attaquant.getElement();
+				m.addPotion(valeursPotion);
+			}else{
+				PersonnageDjinnarou m = (PersonnageDjinnarou) attaquant.getElement();
+				m.addPotion(valeursPotion);
+			}*/
 			Malin m = (Malin) attaquant.getElement();
+			logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " va garder la potion ");
 			m.addPotion(valeursPotion);
 			logs(Level.INFO, "Potion garde !");
-
+			arene.ejectePotion(defenseur.getRefRMI());
 			
 		} else {
 			logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " ou " + 
