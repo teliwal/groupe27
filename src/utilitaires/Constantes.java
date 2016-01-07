@@ -37,11 +37,6 @@ public class Constantes {
 	public static final int VISION = 30;
 	
 	/**
-	 * Taille du champ de vision des Fous
-	 */
-	public static final int  VISION_FOU = 5;
-	
-	/**
 	 * valeur d'augmentation de la vitesse	
 	 */
 	public static final int AUG_VITESSE = 2;
@@ -81,6 +76,10 @@ public class Constantes {
 	 * diminution de la vie
 	 */
 	public static final int DIM_VIE = -1;
+	/**
+	 * diminution de la DEFENCE
+	 */
+	public static final int DIM_DEFENCE = -1;
 	
 	/**
 	 *Augmente l'initiative 
@@ -198,4 +197,84 @@ public class Constantes {
 	public static String nomCompletClient(VueElement<?> client) {
 		return "("+ nomClasse(client) + client.getRefRMI() + " * " + client.getElement().getNomGroupe() + ")";
 	}
+	
+	
+	/*
+	 * les valeurs des caracteristique par default pour le Djinnarou
+	 *  
+	 */
+	public static final int VIE_DJINNAROU = 100;
+	public static final int FORCE_DJINNAROU = 30;
+	public static final int INITIATIVE_DJINNAROU = 50;
+	public static final int VUE_DJINNAROU = 30;
+	public static final int ZONEATTACK_DJINNAROU = 3;
+	public static final int VITESSE_DJINNAROU = 2;
+	public static final int DEFENSE_DJINNAROU = 20;
+	public static final int DON_DJINNAROU = 30;
+	
+	/*
+	 * les valeurs des caracteristique par default pour le FOU
+	 *  
+	 */
+	public static final int VIE_FOU = 100;
+	public static final int FORCE_FOU = 30;
+	public static final int INITIATIVE_FOU = 50;
+	public static final int VUE_FOU = 30;
+	public static final int ZONEATTACK_FOU = 3;
+	public static final int VITESSE_FOU = 2;
+	public static final int DEFENSE_FOU = 20;
+	public static final int DON_FOU = 30;
+	
+	/*
+	 * les valeurs des caracteristique par default pour le HULK
+	 *  
+	 */
+	public static final int VIE_HULK = 100;
+	public static final int FORCE_HULK = 30;
+	public static final int INITIATIVE_HULK = 50;
+	public static final int VUE_HULK = 30;
+	public static final int ZONEATTACK_HULK = 3;
+	public static final int VITESSE_HULK = 2;
+	public static final int DEFENSE_HULK = 20;
+	public static final int DON_HULK = 30;
+	
+	/*
+	 * les valeurs des caracteristique par default pour le JEDI
+	 *  
+	 */
+	public static final int VIE_JEDI = 100;
+	public static final int FORCE_JEDI = 30;
+	public static final int INITIATIVE_JEDI = 50;
+	public static final int VUE_JEDI = 30;
+	public static final int ZONEATTACK_JEDI = 3;
+	public static final int VITESSE_JEDI = 2;
+	public static final int DEFENSE_JEDI = 20;
+	public static final int DON_JEDI = 30;
+	
+	/*
+	 * les valeurs des caracteristique par default pour le PRINCE
+	 *  
+	 */
+	public static final int VIE_PRINCE = 100;
+	public static final int FORCE_PRINCE = 30;
+	public static final int INITIATIVE_PRINCE = 50;
+	public static final int VUE_PRINCE = 30;
+	public static final int ZONEATTACK_PRINCE = 3;
+	public static final int VITESSE_PRINCE = 2;
+	public static final int DEFENSE_PRINCE = 20;
+	public static final int DON_PRINCE = 30;
+	
+	/*
+	 * les valeurs des caracteristique par default pour le ZOMBIE
+	 *  
+	 */
+	public static final int VIE_ZOMBIE = 100;
+	public static final int FORCE_ZOMBIE = 30;
+	public static final int INITIATIVE_ZOMBIE = 50;
+	public static final int VUE_ZOMBIE = 30;
+	public static final int ZONEATTACK_ZOMBIE = 3;
+	public static final int VITESSE_ZOMBIE = 2;
+	public static final int DEFENSE_ZOMBIE = 20;
+	public static final int DON_ZOMBIE = 30;
+
 }
