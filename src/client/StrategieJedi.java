@@ -10,6 +10,7 @@ import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Jedi;
+import serveur.element.PersonnageDjinnarou;
 import serveur.element.PersonnageHulk;
 import serveur.element.PersonnageZombie;
 import utilitaires.Calculs;
@@ -71,7 +72,7 @@ public class StrategieJedi extends Strategie {
 				int testDistance = arene.elementFromRef(refRMI).getCaract(Caracteristique.ZONEATTACK);
 				//diminution de la zone d'attaque
 				if(distPlusProche <= testDistance) { 
-					if(elemPlusProche instanceof PersonnageHulk || elemPlusProche instanceof PersonnageZombie) { 
+					if(elemPlusProche instanceof PersonnageHulk || elemPlusProche instanceof PersonnageZombie || elemPlusProche instanceof PersonnageDjinnarou) { 
 						// duel
 						console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
 						arene.lanceAttaque(refRMI, refCible);

@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.util.HashMap;
 
 import client.StrategieFou;
+import client.StrategiePrince;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import utilitaires.Calculs;
@@ -77,7 +78,7 @@ public class LancerPersonnageFou {
 			
 			Point position = Calculs.positionAleatoireArene();
 			
-			new StrategieFou(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			new StrategiePrince(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du Fou reussie");
 			
 		} catch (Exception e) {

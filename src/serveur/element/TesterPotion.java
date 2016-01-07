@@ -17,7 +17,7 @@ public class TesterPotion{
 	 * @param potion : la potion à ramasser
 	 * prend la potion si ce n'est pas un poison
 	 * */
-	public boolean notPoison(Potion potion) {
+	public boolean estPoison(Potion potion) {
 		return (potion instanceof Poison);
 	}
 	
